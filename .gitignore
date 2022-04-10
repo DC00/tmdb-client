@@ -1,0 +1,16 @@
+Gemfile.lock
+!.gitkeep
+*.swp
+*.rdb
+*.DS_Store
+.ruby-gemset
+.ruby-version
+.idea/
+.bundle/
+coverage/
+doc/
+pkg/
+tmp/
+spec/reports/
+spec/dummy/log/*
+
