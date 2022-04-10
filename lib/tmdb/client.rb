@@ -1,14 +1,15 @@
 module Tmdb
-  module Client
+  class Client
 
-    class << self
+    attr_accessor :adapter
 
-      attr_accessor :api_key, :api_token
+    def initialize
+      self.adapter = Tmdb::Adapter.new
+    end
 
-      def configure
-        yield self
-      end
-
+    def token
+      request = Tmdb::Token::Request.new({})
+      request.execute(adapter)
     end
 
   end

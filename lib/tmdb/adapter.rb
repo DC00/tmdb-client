@@ -8,10 +8,10 @@ module Tmdb
     format :json
     default_timeout 10
 
-    def initialize(api_key, api_token, domain)
-      self.api_key   = api_key
-      self.api_token = api_token
-      self.domain    = domain
+    def initialize
+      self.api_key   = Tmdb.api_key
+      self.api_token = Tmdb.api_token
+      self.domain    = Tmdb.domain
     end
 
     def credentials
@@ -40,14 +40,44 @@ module Tmdb
         end
 
         case response.code
-          when 401 then raise Tmdb::Exception.new(
-            "HTTP #{response.code}: Unauthorized",
-            request:  params,
-            response: response.body,
-            code:     response.code
-          )
-
+          when 401
+            raise Tmdb::Exception.new(
+              "HTTP #{response.code}: Unauthorized",
+              request:  params,
+              response: response.body,
+              code:     response.code
+            )
+          when 403
+            raise Tmdb::Exception.new(
+              "HTTP #{response.code}: Access denied",
+              request:  params,
+              response: response.body,
+              code:     response.code
+            )
+          when 404
+            raise Tmdb::Exception.new(
+              "HTTP #{response.code}: Error finding resource",
+              request:  params,
+              response: response.body,
+              code:     response.code
+            )
+          when 429
+            raise Tmdb::Exception.new(
+              "HTTP #{response.code}: Rate limit exceeded",
+              request:  params,
+              response: response.body,
+              code:     response.code
+            )
+          when 500..599
+            raise Tmdb::Exception.new(
+              "HTTP #{response.code}: Error when processing request",
+              request:  params,
+              response: response.body,
+              code:     response.code
+            )
         end
+
+        Tmdb::Payload.new(response)
 
       rescue Timeout::Error => exception
 
