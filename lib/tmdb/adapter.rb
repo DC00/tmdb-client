@@ -3,9 +3,7 @@ module Tmdb
 
     include HTTParty
 
-    attr_accessor :api_key
-    attr_accessor :api_token
-    attr_accessor :domain
+    attr_accessor :api_key, :api_token, :domain
 
     format :json
     default_timeout 10
@@ -42,12 +40,12 @@ module Tmdb
         end
 
         case response.code
-        when 401 then raise Tmdb::Exception.new(
-          "HTTP #{response.code}: Unauthorized",
-          request:  params,
-          response: response.body,
-          code:     response.code
-        )
+          when 401 then raise Tmdb::Exception.new(
+            "HTTP #{response.code}: Unauthorized",
+            request:  params,
+            response: response.body,
+            code:     response.code
+          )
 
         end
 

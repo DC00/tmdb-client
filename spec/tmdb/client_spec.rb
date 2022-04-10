@@ -10,9 +10,5 @@ describe Tmdb::Client do
   it "does something cool" do
     expect(Tmdb::Client.get_movies("params")).to eq("params")
   end
-
-  it "activesupport works" do
-    expect(Tmdb::Client.pluralize("tomato")).to eq("tomatoes")
-  end
 end
 

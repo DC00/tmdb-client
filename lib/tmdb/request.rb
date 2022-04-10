@@ -3,8 +3,7 @@ module Tmdb
 
     include Tmdb::Constants
 
-    attr_accessor :mode
-    attr_accessor :options
+    attr_accessor :mode, :options
 
     def initialize(options)
       self.mode    = options.delete(:mode)
