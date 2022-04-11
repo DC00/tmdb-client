@@ -13,14 +13,14 @@ module Tmdb
             when MOCK
               Tmdb::Payload.new(Mock.pass)
             else
-              adapter.execute(:get, SESSION_URL, attributes)
+              adapter.execute(:post, SESSION_URL, attributes)
           end
 
           Tmdb::Authentication::Session::Response.new(attributes, response)
         end
 
         def attributes
-          options
+          options.slice(:request_token)
         end
 
       end

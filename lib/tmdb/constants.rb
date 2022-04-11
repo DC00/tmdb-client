@@ -7,7 +7,7 @@ module Tmdb
     PRODUCTION       = "production".freeze
 
     GUEST_SESSION_URL = "/3/authentication/guest_session/new".freeze
-    SESSION_URL       = "3/authentication/session/new".freeze
+    SESSION_URL       = "/3/authentication/session/new".freeze
     TOKEN_REQUEST_URL = "/3/authentication/token/new".freeze
 
   end

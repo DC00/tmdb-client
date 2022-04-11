@@ -26,7 +26,7 @@ module Tmdb
     def headers
       {
         "Authorization" => "Bearer #{api_token}",
-        "Content-Type"  => "application/json;charset=utf-8"
+        "Content-Type"  => "application/json"
       }
     end
 
