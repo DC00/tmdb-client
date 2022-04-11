@@ -1,5 +1,6 @@
 module Tmdb
   class Adapter
+    # (Adapter) Makes Adaptee's interface compatible with Target's interface
 
     include HTTParty
 
@@ -14,16 +15,10 @@ module Tmdb
       self.domain    = Tmdb.domain
     end
 
-    def credentials
-      {
-        api_key:   api_key,
-        api_token: api_token
-      }
-    end
-
     def headers
       {
-        "Content-Type" => "application/json"
+        "Authorization" => "Bearer #{api_token}",
+        "Content-Type" => "application/json;charset=utf-8"
       }
     end
 
@@ -32,9 +27,9 @@ module Tmdb
         endpoint = [domain, resource].join
         response = case method
           when :get
-            self.class.get(endpoint, headers: headers, query: params.merge(credentials))
+            self.class.get(endpoint, headers: headers, query: params)
           when :post
-            self.class.post(endpoint, headers: headers, body: params.merge(credentials).to_json)
+            self.class.post(endpoint, headers: headers, body: params.to_json)
           else
             raise Tmdb::Exception.new("Invalid HTTP method provided", request: params, code: 100)
         end

@@ -1,5 +1,6 @@
 module Tmdb
   class Response
+    # (Target) Desired domain specific language of client
 
     attr_accessor :content, :request, :response
 

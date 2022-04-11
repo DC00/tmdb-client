@@ -7,9 +7,9 @@ module Tmdb
           when MOCK_VENDOR_FAIL
             raise Tmdb::Exception.new("HTTP 001: Mocked failure", request: attributes, code: "999")
           when MOCK_FAIL
-            Tmdb::Payload(Mock.fail)
+            Tmdb::Payload.new(Mock.fail)
           when MOCK
-            Tmdb::Payload(Mock.pass)
+            Tmdb::Payload.new(Mock.pass)
           else
             adapter.execute(:get, "/3/authentication/token/new", attributes)
         end

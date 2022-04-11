@@ -10,11 +10,11 @@ module Tmdb
     end
 
     def error_code
-      content["error"]
+      content["status_code"]
     end
 
     def error_message
-      content["error_description"]
+      content["status_message"]
     end
 
   end

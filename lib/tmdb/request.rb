@@ -1,5 +1,6 @@
 module Tmdb
   class Request
+    # (Adaptee) Existing interface incompatible with client which we want to adapt to Client interface
 
     include Tmdb::Constants
 

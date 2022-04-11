@@ -13,7 +13,6 @@ Gem::Specification.new do |spec|
   spec.description           = "The Movie Database Enterprise API Client"
   spec.homepage              = "https://github.com/DC00/tmdb-client"
   spec.license               = "MIT"
-  spec.required_ruby_version = ">= 2.5.0"
 
   spec.files                 = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.executables           = spec.files.grep(/^bin\//) { |f| File.basename(f) }
@@ -27,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "simplecov"
 end
