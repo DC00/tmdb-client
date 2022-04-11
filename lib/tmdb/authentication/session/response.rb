@@ -1,6 +1,6 @@
 module Tmdb
   module Authentication
-    module GuestSession
+    module Session
 
       class Response < Tmdb::Response
 
@@ -8,12 +8,8 @@ module Tmdb
           content.dig("success")
         end
 
-        def guest_session_id
-          content.dig("guest_session_id")
-        end
-
-        def expires_at
-          content.dig("expires_at")
+        def session_id
+          content.dig("session_id")
         end
 
       end

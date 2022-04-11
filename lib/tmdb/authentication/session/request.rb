@@ -1,6 +1,6 @@
 module Tmdb
   module Authentication
-    module Token
+    module Session
 
       class Request < Tmdb::Request
 
@@ -13,10 +13,10 @@ module Tmdb
             when MOCK
               Tmdb::Payload.new(Mock.pass)
             else
-              adapter.execute(:get, TOKEN_REQUEST_URL, attributes)
+              adapter.execute(:get, SESSION_URL, attributes)
           end
 
-          Tmdb::Authentication::Token::Response.new(attributes, response)
+          Tmdb::Authentication::Session::Response.new(attributes, response)
         end
 
         def attributes

@@ -1,4 +1,4 @@
-describe Tmdb::Authentication::Token::Request do
+describe Tmdb::Authentication::Session::Request do
 
   subject { described_class.new(options) }
 
@@ -32,7 +32,7 @@ describe Tmdb::Authentication::Token::Request do
       end
 
       it "has correct url" do
-        expect(adapter).to receive(:execute).with(:get, TOKEN_REQUEST_URL, {})
+        expect(adapter).to receive(:execute).with(:get, SESSION_URL, {})
         subject.execute(adapter)
       end
 
@@ -70,8 +70,7 @@ describe Tmdb::Authentication::Token::Request do
 
         expect(response.success?).to eq(true)
         expect(response.success).to eq(true)
-        expect(response.request_token).to be_present
-        expect(response.expires_at).to be_present
+        expect(response.session_id).to be_present
         expect(response.error_code).to be_nil
       end
 

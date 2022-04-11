@@ -2,7 +2,7 @@ describe Tmdb::Response do
 
   subject { described_class.new(request, response) }
 
-  let(:request) { {} }
+  let(:request) { double("request") }
   let(:response) { double(
     "response",
     content: {},

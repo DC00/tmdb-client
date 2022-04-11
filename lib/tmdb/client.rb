@@ -8,6 +8,11 @@ module Tmdb
       self.adapter = Tmdb::Adapter.build
     end
 
+    def guest_session
+      request = Tmdb::Authentication::GuestSession::Request.new({})
+      request.execute(adapter)
+    end
+
     def token
       # (Adaptee) contains info for Adapter class
       request = Tmdb::Authentication::Token::Request.new({})

@@ -1,6 +1,6 @@
 module Tmdb
   module Authentication
-    module Token
+    module Session
 
       class Mock
 
@@ -8,9 +8,8 @@ module Tmdb
           OpenStruct.new(
             "code"            => 200,
             "parsed_response" => {
-              "success"       => true,
-              "expires_at"    => "2022-04-10 23:09:37 UTC",
-              "request_token" => "ea816866a6369d9f61f9bdf606b32376e1f31ad2"
+              "success"          => true,
+              "session_id" => "55790b05e5de6b5f453b0c5286a047a8",
             }
           )
         end
