@@ -9,6 +9,11 @@ module Tmdb
     format :json
     default_timeout 10
 
+    def self.build
+      raise "Must specify api_token. See <github link>" if Tmdb.api_token.nil?
+      new
+    end
+
     def initialize
       self.api_key   = Tmdb.api_key
       self.api_token = Tmdb.api_token

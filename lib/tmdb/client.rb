@@ -5,7 +5,7 @@ module Tmdb
 
     def initialize
       # (Adapter)
-      self.adapter = Tmdb::Adapter.new
+      self.adapter = Tmdb::Adapter.build
     end
 
     def token
