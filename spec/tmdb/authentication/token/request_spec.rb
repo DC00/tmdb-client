@@ -1,4 +1,4 @@
-describe Tmdb::Token::Request do
+describe Tmdb::Authentication::Token::Request do
 
   subject { described_class.new(options) }
 
@@ -13,7 +13,7 @@ describe Tmdb::Token::Request do
       end
     end
 
-    context "when MOCK_VENDOR_FAIL" do
+    context "when mock_vendor_fail" do
 
       let(:mode) { MOCK_VENDOR_FAIL }
 

@@ -1,5 +1,6 @@
 module Tmdb
   class Adapter
+
     # (Adapter) Makes Adaptee's interface compatible with Target's interface
 
     include HTTParty
@@ -11,6 +12,7 @@ module Tmdb
 
     def self.build
       raise "Must specify api_token. See <github link>" if Tmdb.api_token.nil?
+
       new
     end
 
@@ -23,7 +25,7 @@ module Tmdb
     def headers
       {
         "Authorization" => "Bearer #{api_token}",
-        "Content-Type" => "application/json;charset=utf-8"
+        "Content-Type"  => "application/json;charset=utf-8"
       }
     end
 

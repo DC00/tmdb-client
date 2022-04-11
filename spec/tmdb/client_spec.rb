@@ -17,10 +17,10 @@ describe Tmdb::Client do
 
   describe "#token" do
 
-    let!(:request) { Tmdb::Token::Request.new({ mode: MOCK }) }
+    let!(:request) { Tmdb::Authentication::Token::Request.new({ mode: MOCK }) }
 
     before do
-      allow(Tmdb::Token::Request).to receive(:new) { request }
+      allow(Tmdb::Authentication::Token::Request).to receive(:new) { request }
     end
 
     it "executes the request" do

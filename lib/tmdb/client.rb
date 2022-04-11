@@ -10,7 +10,7 @@ module Tmdb
 
     def token
       # (Adaptee) contains info for Adapter class
-      request = Tmdb::Token::Request.new({})
+      request = Tmdb::Authentication::Token::Request.new({})
 
       # (Target) request.execute returns Response which is the Target interface
       request.execute(adapter)
