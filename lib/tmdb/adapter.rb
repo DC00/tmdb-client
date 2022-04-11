@@ -12,6 +12,7 @@ module Tmdb
 
     def self.build
       raise "Must specify api_token. See <github link>" if Tmdb.api_token.nil?
+      raise "Must specify domain. See <github link>" if Tmdb.domain.nil?
 
       new
     end

@@ -9,10 +9,12 @@ describe Tmdb::Client do
     end
   end
 
-  it { is_expected.to respond_to(:adapter) }
-
   it "has a version number" do
     expect(Tmdb::VERSION).to_not be_nil
+  end
+
+  describe "attributes" do
+    it { is_expected.to respond_to(:adapter) }
   end
 
   describe "#token" do

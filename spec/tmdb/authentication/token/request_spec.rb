@@ -4,14 +4,12 @@ describe Tmdb::Authentication::Token::Request do
 
   let(:options) { { mode: mode } }
 
-  describe "#execute" do
+  Tmdb.configure do |config|
+    config.api_token = "sample_token"
+    config.domain = "sample_domain"
+  end
 
-    before do
-      Tmdb.configure do |config|
-        config.api_token = "sample_token"
-        config.domain = "sample_domain"
-      end
-    end
+  describe "#execute" do
 
     context "when mock_vendor_fail" do
 
