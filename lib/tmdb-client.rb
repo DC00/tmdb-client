@@ -22,6 +22,10 @@ require "tmdb/authentication/token/mock"
 require "tmdb/authentication/token/request"
 require "tmdb/authentication/token/response"
 
+require "tmdb/authentication/validate_login/mock"
+require "tmdb/authentication/validate_login/request"
+require "tmdb/authentication/validate_login/response"
+
 module Tmdb
 
   class << self

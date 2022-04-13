@@ -48,4 +48,25 @@ describe Tmdb::Client do
 
   end
 
+  describe "#validate_login" do
+
+    let!(:request) { Tmdb::Authentication::ValidateLogin::Request.new(options) }
+    let(:options) { {
+      mode: MOCK,
+      username: "sample_username",
+      password: "sample_password",
+      request_token: "sample_request_token"
+    } }
+
+    before do
+      allow(Tmdb::Authentication::ValidateLogin::Request).to receive(:new) { request }
+    end
+
+    it "executes the request" do
+      expect(request).to receive(:execute).with(subject.adapter)
+      subject.validate_login(options)
+    end
+
+  end
+
 end

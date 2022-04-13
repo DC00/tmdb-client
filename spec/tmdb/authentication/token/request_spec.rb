@@ -55,7 +55,8 @@ describe Tmdb::Authentication::Token::Request do
       it "returns mock fail response" do
         response = subject.execute(Tmdb::Adapter.build)
 
-        expect(response.success?).to be_falsey
+        expect(response.success?).to eq(false)
+        expect(response.success).to eq(false)
         expect(response.error_code).to eq(7)
       end
 

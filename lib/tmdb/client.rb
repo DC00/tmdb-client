@@ -21,5 +21,10 @@ module Tmdb
       request.execute(adapter)
     end
 
+    def validate_login(**options)
+      request = Tmdb::Authentication::ValidateLogin::Request.new(**options)
+      request.execute(adapter)
+    end
+
   end
 end

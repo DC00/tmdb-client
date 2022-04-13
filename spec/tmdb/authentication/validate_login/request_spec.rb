@@ -1,8 +1,13 @@
-describe Tmdb::Authentication::Session::Request do
+describe Tmdb::Authentication::ValidateLogin::Request do
 
   subject { described_class.new(options) }
 
-  let(:options) { { mode: mode, request_token: "sample_token" } }
+  let(:options) { {
+    mode: mode,
+    username: "sample_username",
+    password: "sample_password",
+    request_token: "sample_request_token"
+  } }
 
   Tmdb.configure do |config|
     config.api_token = "sample_token"
@@ -12,7 +17,6 @@ describe Tmdb::Authentication::Session::Request do
   describe "#execute" do
 
     context "when happy" do
-
       let(:mode) { PRODUCTION }
       let(:adapter) { Tmdb::Adapter.build }
       let(:http_party_response) {
@@ -24,7 +28,7 @@ describe Tmdb::Authentication::Session::Request do
           parsed_response: JSON.parse(body)
         )
       }
-      let(:body) { "{\"success\":true}" }
+      let(:body) { "{\"success\":true,\"expires_at\":\"2022-04-11 19:11:14 UTC\"}" }
       let(:headers) { { "date" => ["Mon, 11 Apr 2022 17:50:00 GMT"], "expires" => ["-1"] } }
 
       before do
@@ -32,7 +36,7 @@ describe Tmdb::Authentication::Session::Request do
       end
 
       it "has correct url" do
-        expect(adapter).to receive(:execute).with(:post, SESSION_URL, options.slice(:request_token))
+        expect(adapter).to receive(:execute).with(:post, VALIDATE_LOGIN_URL, options)
         subject.execute(adapter)
       end
 
@@ -71,7 +75,8 @@ describe Tmdb::Authentication::Session::Request do
 
         expect(response.success?).to eq(true)
         expect(response.success).to eq(true)
-        expect(response.session_id).to be_present
+        expect(response.request_token).to be_present
+        expect(response.expires_at).to be_present
         expect(response.error_code).to be_nil
       end
 
