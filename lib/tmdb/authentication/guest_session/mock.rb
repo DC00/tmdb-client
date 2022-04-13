@@ -10,7 +10,7 @@ module Tmdb
             "parsed_response" => {
               "success"          => true,
               "guest_session_id" => "55790b05e5de6b5f453b0c5286a047a8",
-              "expires_at"       => "2022-04-10 23:09:37 UTC",
+              "expires_at"       => "2022-04-10 23:09:37 UTC"
             }
           )
         end
