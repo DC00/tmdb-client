@@ -17,6 +17,22 @@ describe Tmdb::Client do
     it { is_expected.to respond_to(:adapter) }
   end
 
+  describe "#session" do
+
+    let!(:request) { Tmdb::Authentication::Session::Request.new({ mode: MOCK }) }
+    let(:token) { "afad3b67a8575221d4763f6130c3079709819bc0" }
+
+    before do
+      allow(Tmdb::Authentication::Session::Request).to receive(:new) { request }
+    end
+
+    it "executes the request" do
+      expect(request).to receive(:execute).with(subject.adapter)
+      subject.session(token)
+    end
+
+  end
+
   describe "#token" do
 
     let!(:request) { Tmdb::Authentication::Token::Request.new({ mode: MOCK }) }

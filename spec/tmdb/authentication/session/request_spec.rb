@@ -24,7 +24,7 @@ describe Tmdb::Authentication::Session::Request do
           parsed_response: JSON.parse(body)
         )
       }
-      let(:body) { "{\"success\":true,\"expires_at\":\"2022-04-11 19:11:14 UTC\"}" }
+      let(:body) { "{\"success\":true}" }
       let(:headers) { { "date" => ["Mon, 11 Apr 2022 17:50:00 GMT"], "expires" => ["-1"] } }
 
       before do
@@ -32,7 +32,7 @@ describe Tmdb::Authentication::Session::Request do
       end
 
       it "has correct url" do
-        expect(adapter).to receive(:execute).with(:get, SESSION_URL, {})
+        expect(adapter).to receive(:execute).with(:post, SESSION_URL, {})
         subject.execute(adapter)
       end
 
@@ -55,8 +55,9 @@ describe Tmdb::Authentication::Session::Request do
       it "returns mock fail response" do
         response = subject.execute(Tmdb::Adapter.build)
 
-        expect(response.success?).to be_falsey
-        expect(response.error_code).to eq(7)
+        expect(response.success?).to eq(true)
+        expect(response.success).to eq(false)
+        expect(response.error_code).to eq(6)
       end
 
     end
