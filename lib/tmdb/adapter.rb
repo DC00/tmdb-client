@@ -12,7 +12,7 @@ module Tmdb
 
     def self.build
       raise "Must specify api_token. See <github link>" if Tmdb.api_token.nil?
-      raise "Must specify domain. See <github link>" if Tmdb.domain.nil?
+      # raise "Must specify domain. See <github link>" if Tmdb.domain.nil?
 
       new
     end
@@ -20,13 +20,13 @@ module Tmdb
     def initialize
       self.api_key   = Tmdb.api_key
       self.api_token = Tmdb.api_token
-      self.domain    = Tmdb.domain
+      self.domain    = Tmdb.domain || "https://api.themoviedb.org"
     end
 
     def headers
       {
         "Authorization" => "Bearer #{api_token}",
-        "Content-Type"  => "application/json"
+        "Content-Type"  => "application/json;charset=utf-8"
       }
     end
 

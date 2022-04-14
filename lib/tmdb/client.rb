@@ -8,6 +8,11 @@ module Tmdb
       self.adapter = Tmdb::Adapter.build
     end
 
+    def guest_session
+      request = Tmdb::Authentication::GuestSession::Request.new({})
+      request.execute(adapter)
+    end
+
     def session(token)
       request = Tmdb::Authentication::Session::Request.new({ request_token: token })
       request.execute(adapter)
@@ -18,11 +23,6 @@ module Tmdb
       request = Tmdb::Authentication::Token::Request.new({})
 
       # (Target) request.execute returns Response which is the Target interface
-      request.execute(adapter)
-    end
-
-    def validate_login(**options)
-      request = Tmdb::Authentication::ValidateLogin::Request.new(**options)
       request.execute(adapter)
     end
 

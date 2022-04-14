@@ -17,18 +17,17 @@ describe Tmdb::Client do
     it { is_expected.to respond_to(:adapter) }
   end
 
-  describe "#session" do
+  describe "#guest_session" do
 
-    let!(:request) { Tmdb::Authentication::Session::Request.new({ mode: MOCK }) }
-    let(:token) { "afad3b67a8575221d4763f6130c3079709819bc0" }
+    let!(:request) { Tmdb::Authentication::GuestSession::Request.new({ mode: MOCK }) }
 
     before do
-      allow(Tmdb::Authentication::Session::Request).to receive(:new) { request }
+      allow(Tmdb::Authentication::GuestSession::Request).to receive(:new) { request }
     end
 
     it "executes the request" do
       expect(request).to receive(:execute).with(subject.adapter)
-      subject.session(token)
+      subject.guest_session
     end
 
   end
@@ -48,23 +47,18 @@ describe Tmdb::Client do
 
   end
 
-  describe "#validate_login" do
+  describe "#session" do
 
-    let!(:request) { Tmdb::Authentication::ValidateLogin::Request.new(options) }
-    let(:options) { {
-      mode: MOCK,
-      username: "sample_username",
-      password: "sample_password",
-      request_token: "sample_request_token"
-    } }
+    let!(:request) { Tmdb::Authentication::Session::Request.new({ mode: MOCK }) }
+    let(:token) { "afad3b67a8575221d4763f6130c3079709819bc0" }
 
     before do
-      allow(Tmdb::Authentication::ValidateLogin::Request).to receive(:new) { request }
+      allow(Tmdb::Authentication::Session::Request).to receive(:new) { request }
     end
 
     it "executes the request" do
       expect(request).to receive(:execute).with(subject.adapter)
-      subject.validate_login(options)
+      subject.session(token)
     end
 
   end
