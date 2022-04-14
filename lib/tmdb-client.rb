@@ -22,6 +22,10 @@ require "tmdb/authentication/token/mock"
 require "tmdb/authentication/token/request"
 require "tmdb/authentication/token/response"
 
+require "tmdb/certification/movie/mock"
+require "tmdb/certification/movie/request"
+require "tmdb/certification/movie/response"
+
 module Tmdb
 
   class << self

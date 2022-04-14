@@ -80,4 +80,14 @@ describe Tmdb::Authentication::GuestSession::Request do
 
   end
 
+  describe "#attributes" do
+
+    let(:mode) { MOCK }
+
+    it "returns options" do
+      expect(subject.attributes).to eq(options)
+    end
+
+  end
+
 end

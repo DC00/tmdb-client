@@ -9,8 +9,8 @@ module Tmdb
             "code"            => 200,
             "parsed_response" => {
               "success"          => true,
-              "guest_session_id" => "55790b05e5de6b5f453b0c5286a047a8",
-              "expires_at"       => "2022-04-10 23:09:37 UTC"
+              "guest_session_id" => "1ce82ec1223641636ad4a60b07de3581",
+              "expires_at"       => "2016-08-27 16:26:40 UTC"
             }
           )
         end

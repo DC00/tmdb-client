@@ -8,21 +8,26 @@ module Tmdb
       self.adapter = Tmdb::Adapter.build
     end
 
-    def guest_session
-      request = Tmdb::Authentication::GuestSession::Request.new({})
+    def guest_session(options)
+      request = Tmdb::Authentication::GuestSession::Request.new(options)
       request.execute(adapter)
     end
 
-    def session(token)
-      request = Tmdb::Authentication::Session::Request.new({ request_token: token })
+    def session(options)
+      request = Tmdb::Authentication::Session::Request.new(options)
       request.execute(adapter)
     end
 
-    def token
+    def token(options)
       # (Adaptee) contains info for Adapter class
-      request = Tmdb::Authentication::Token::Request.new({})
+      request = Tmdb::Authentication::Token::Request.new(options)
 
       # (Target) request.execute returns Response which is the Target interface
+      request.execute(adapter)
+    end
+
+    def movie_certifications(options)
+      request = Tmdb::Certification::Movie::Request.new(options)
       request.execute(adapter)
     end
 

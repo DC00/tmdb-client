@@ -9,7 +9,7 @@ module Tmdb
             "code"            => 200,
             "parsed_response" => {
               "success"    => true,
-              "session_id" => "55790b05e5de6b5f453b0c5286a047a8"
+              "session_id" => "79191836ddaa0da3df76a5ffef6f07ad6ab0c641"
             }
           )
         end

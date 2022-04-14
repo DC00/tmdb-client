@@ -57,7 +57,7 @@ describe Tmdb::Authentication::Token::Request do
 
         expect(response.success?).to eq(false)
         expect(response.success).to eq(false)
-        expect(response.error_code).to eq(7)
+        expect(response.error_code).to eq(34)
       end
 
     end
@@ -76,6 +76,16 @@ describe Tmdb::Authentication::Token::Request do
         expect(response.error_code).to be_nil
       end
 
+    end
+
+  end
+
+  describe "#attributes" do
+
+    let(:mode) { MOCK }
+
+    it "returns options" do
+      expect(subject.attributes).to eq(options)
     end
 
   end
